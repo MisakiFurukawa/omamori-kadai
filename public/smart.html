@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>お守りリモコン</title>
+    <script type="module">
+        import { io } from "https://cdn.socket.io/4.5.1/socket.io.esm.min.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let alpha = 0, beta = 0, gamma = 0, z = 0;
+            const socket = io();
+
+            document.querySelector("#connect").addEventListener("click", () => {
+                // センサー値の送信ループ
+                setInterval(() => {
+                    socket.emit("sensor", {
+                        a: alpha,
+                        b: beta,
+                        g: gamma,
+                        z: z
+                    });
+                }, 50);
+                
+                document.querySelector("#connect").style.display = "none";
+                document.querySelector("#contents").textContent = "PCのお守りを操作中...";
+                request_permission();
+            });
+
+            window.ondevicemotion = (event) => {
+                z = event.accelerationIncludingGravity.z.toFixed(2);
+            };
+
+            window.ondeviceorientation = (event) => {
+                alpha = event.alpha.toFixed(2);
+                beta = event.beta.toFixed(2);
+                gamma = event.gamma.toFixed(2);
+            };
+
+            function request_permission() {
+                if (typeof DeviceOrientationEvent.requestPermission === "function") {
+                    DeviceOrientationEvent.requestPermission();
+                }
+                if (typeof DeviceMotionEvent.requestPermission === "function") {
+                    DeviceMotionEvent.requestPermission();
+                }
+            }
+        });
+    </script>
+    <style>
+        body { font-family: sans-serif; background: #f0f4f8; text-align: center; padding-top: 50px; }
+        .btn { background: #764ba2; color: white; border: none; padding: 20px 40px; border-radius: 10px; font-size: 20px; font-weight: bold; }
+        #content { background: white; margin: 20px; padding: 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h2>お守りコントローラー</h2>
+        <input id="connect" type="button" class="btn" value="接続する" />
+        <p id="contents">ボタンを押して、デバイスを傾けてください</p>
+    </div>
+    <h4>Webプログラミング最終課題</h4>
+</body>
+</html>

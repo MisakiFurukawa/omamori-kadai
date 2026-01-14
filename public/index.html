@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Amulet - Wishcore Art</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>✧ AI 守護霊のお守り ✧</h1></div>
+        <div class="quiz-container">
+            <div id="setupArea">
+                <textarea id="troubleInput" placeholder="あなたの心の願いや、今の悩みを聞かせてください..."></textarea>
+                <button class="btn" onclick="generateAmulet()">お守りを授かる</button>
+            </div>
+            <div id="resultArea" style="display: none;">
+                <div id="canvas-container"></div>
+                <div class="status" id="amuletMessage"></div>
+                <div id="itemDisplay"></div>
+                <button class="btn" onclick="location.reload()">もう一度相談する</button>
+            </div>
+        </div>
+        <div class="loading" id="loading">守護霊がお守りに光を込めています...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
