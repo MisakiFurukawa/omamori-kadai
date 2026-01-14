@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Amulet - Wishcore Art</title>
+    <title>AIお守り</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header"><h1>✧ AI 守護霊のお守り ✧</h1></div>
-        <div class="quiz-container">
+    <div class="app-wrapper">
+        <main class="main-content">
             <div id="setupArea">
-                <textarea id="troubleInput" placeholder="あなたの心の願いや、今の悩みを聞かせてください..."></textarea>
-                <button class="btn" onclick="generateAmulet()">お守りを授かる</button>
+                <h1>AIお守り</h1>
+                <textarea id="troubleInput" placeholder="あなたの悩みや願いを託してください..."></textarea>
+                <button class="btn" onclick="generateAmulet()">お守りを生成する</button>
+                <div id="loading" class="loading">守護霊と交信中...</div>
             </div>
-            <div id="resultArea" style="display: none;">
-                <div id="canvas-container"></div>
+
+            <div id="resultArea" style="display:none;">
                 <div class="status" id="amuletMessage"></div>
+                <div id="canvas-container"></div>
                 <div id="itemDisplay"></div>
-                <button class="btn" onclick="location.reload()">もう一度相談する</button>
+                <button class="btn" onclick="location.reload()">もう一度</button>
             </div>
-        </div>
-        <div class="loading" id="loading">守護霊がお守りに光を込めています...</div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h2>✧ 遊び方 ✧</h2>
+                <div class="instruction">
+                    <p><strong>1. 願いを託す:</strong> PC画面の入力欄に、あなたの悩みや願いを入力してボタンを押してください。</p>
+                    <p><strong>2. お守りを受け取る:</strong> AIがあなただけのメッセージと、守護する3Dお守りを生成します。</p>
+                    <p><strong>3. スマホと繋ぐ:</strong> 下のQRコードをスマホで読み取り、専用画面を開きます。</p>
+                    <p><strong>4. 魂を吹き込む:</strong> スマホ画面の「接続」を押し、スマホを傾けてみてください。PC上のお守りが同期して揺れ動きます。</p>
+                </div>
+
+                <div class="qr-area">
+                    <p>▼ 接続用QRコード ▼</p>
+                    <div id="qrcode"></div> 
+                </div>
+            </div>
+        </aside>
     </div>
     <script src="script.js"></script>
 </body>
