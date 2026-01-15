@@ -22,7 +22,7 @@ window.onload = () => {
 
     console.log("QR Code URL:", baseUrl); // デバッグ用
 
-    // QRコードを表示する（無料のAPIを利用）
+    // QRコードを表示する
     const qrElement = document.getElementById('qrcode');
     if (qrElement) {
         qrElement.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(baseUrl)}" alt="QR Code">`;
@@ -56,7 +56,7 @@ async function generateAmulet() {
         document.getElementById('amuletMessage').textContent = amuletData.message;
         document.getElementById('itemDisplay').textContent = "✧ Lucky Item: " + amuletData.item + " ✧";
 
-        // 生成のたびにキラキラの位置をランダムに変える
+        // 生成のたびにキラキラの位置をランダムに変える✧
         sparkles = [];
         for(let i=0; i<40; i++) {
             sparkles.push({
@@ -74,7 +74,7 @@ async function generateAmulet() {
 
     } catch (e) {
         console.error(e);
-        alert("守護霊との通信に失敗しました。リロードしてやり直してください。");
+        alert("守護霊との交信に失敗しました。リロードしてやり直してください。");
     } finally {
         document.getElementById('loading').classList.remove('show');
     }
@@ -139,11 +139,11 @@ const sketch = (p) => {
         
         p.pop();
 
-        // 空間に漂うキラキラ（Wishcoreな演出）
+        // 空間に漂うキラキラ✧
         p.noStroke();
         sparkles.forEach((s, i) => {
             p.push();
-            // 明滅アニメーション
+            // アニメーション
             let blink = p.map(p.sin(p.frameCount * 0.05 + s.offset), -1, 1, 80, 255);
             p.fill(255, 255, 255, blink);
             p.translate(s.x, s.y, s.z);

@@ -40,12 +40,12 @@ body {
 
 /* 右側：サイドバー（説明・QR） */
 .sidebar {
-    width: 350px; /* 少しスリムに */
+    width: 350px;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-left: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 25px; /* 余白を調整 */
+    padding: 25px;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -149,23 +149,23 @@ h1 {
 /* --- 4. サイドバー（説明 & QR） --- */
 .sidebar h2 {
     color: #a6c1ee;
-    font-size: 1.3rem; /* 少し小さく */
+    font-size: 1.3rem;
     margin-bottom: 20px;
     text-align: center;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 15px;
 }
 
-/* 説明文エリア：長ければスクロールさせる */
+/* 説明文エリア */
 .instruction {
     flex: 1; 
-    overflow-y: auto; /* ここが重要！はみ出たらスクロール */
+    overflow-y: auto;
     padding-right: 10px;
     margin-bottom: 20px;
 }
 
 .instruction p {
-    font-size: 0.9rem; /* 少し小さく */
+    font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 15px;
     color: #666;
@@ -178,14 +178,14 @@ h1 {
     margin-bottom: 4px;
 }
 
-/* QRエリア：サイドバーの一番下に固定気味にする */
+/* QRエリア */
 .qr-area {
     background: rgba(255, 255, 255, 0.5);
     padding: 20px;
     border-radius: 30px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    flex-shrink: 0; /* QRエリア自体は縮ませない */
+    flex-shrink: 0;
 }
 
 .qr-area p {
@@ -195,7 +195,7 @@ h1 {
 }
 
 #qrcode img {
-    width: 140px; /* 少しだけ小さくして余裕を持たせる */
+    width: 140px;
     height: 140px;
     border-radius: 12px;
     border: 5px solid white;
